@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8" />
+<title>RxChef — كيف يعمل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  body { margin:0; background:#F6F5F1; color:#16221F; font-family:'IBM Plex Sans Arabic', system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#348F80; text-decoration:none; }
+  a:hover { color:#D89A83; }
+</style>
+</helmet>
+<div dir="rtl" style="min-height:100vh; padding:0 clamp(20px,7vw,110px) 96px; box-sizing:border-box; background:radial-gradient(64% 42% at 78% 4%, rgba(52,143,128,.10), transparent 70%), radial-gradient(52% 38% at 10% 92%, rgba(216,154,131,.13), transparent 72%), linear-gradient(165deg,#F4F6F3,#F6F5F1 46%,#F8F1EC)">
+
+  <header style="position:sticky; top:16px; z-index:5; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:12px 22px 12px 26px; max-width:1100px; margin:22px auto 0; box-sizing:border-box; background:linear-gradient(100deg, rgba(255,254,251,.82), rgba(244,246,243,.78)); backdrop-filter:blur(14px) saturate(1.1); -webkit-backdrop-filter:blur(14px) saturate(1.1); border:1px solid rgba(52,143,128,.16); border-radius:20px; box-shadow:0 12px 30px -22px rgba(9,72,61,.4)">
+    <a href="./RxChef Home.dc.html" style="display:flex; align-items:center"><img src="uploads/logo%20RxChef.jpg" alt="RxChef" style="height:38px; width:auto; mix-blend-mode:multiply" /></a>
+    <nav style="display:flex; align-items:center; gap:clamp(12px,1.9vw,26px); font-size:14.5px; justify-content:flex-end; white-space:nowrap">
+      <a href="./RxChef Tool.dc.html" style="color:#09483D">الأداة</a>
+      <a href="./RxChef How It Works.dc.html" style="color:#348F80">كيف يعمل</a>
+      <a href="./RxChef About.dc.html" style="color:#09483D">عن المشروع</a>
+      <a href="./RxChef FAQ.dc.html" style="color:#09483D">أسئلة شائعة</a>
+      <a href="./RxChef Contact.dc.html" style="color:#09483D">تواصل</a>
+    </nav>
+  </header>
+
+  <main style="max-width:1100px; margin:0 auto">
+    <section style="padding:clamp(44px,9vh,88px) 0 clamp(28px,4vh,44px)">
+      <p style="margin:0 0 14px; font-size:13px; letter-spacing:.1em; color:#AFB8B5">كيف يعمل</p>
+      <h1 style="margin:0; font-size:clamp(30px,3.6vw,46px); line-height:1.3; font-weight:600; color:#09483D; letter-spacing:-.01em; max-width:26ch; text-wrap:pretty">أربع خطوات، كل واحدة تحلّ مشكلة واحدة</h1>
+      <p style="margin:20px 0 0; max-width:54ch; font-size:16.5px; line-height:1.9; color:#16221F; opacity:.76">التركيبة تمرّ على أربعة إجراءات بالترتيب. هنا كل إجراء بلغة واضحة ومثال حقيقي من وصفة، ولمن يريد التفصيل صفحة خاصة بكل واحد.</p>
+    </section>
+
+    <section style="display:grid; gap:clamp(18px,3vh,30px)">
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(24px,4vw,56px); align-items:center; background:#FFFEFB; border:1px solid rgba(175,184,181,.42); border-radius:26px; padding:clamp(26px,3.4vw,40px); box-shadow:0 24px 54px -40px rgba(9,72,61,.34)">
+        <div>
+          <div style="display:flex; align-items:center; gap:14px; margin-bottom:18px">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:rgba(52,143,128,.12); border:1px solid rgba(52,143,128,.3); font-family:Outfit,sans-serif; font-size:15px; color:#09483D">01</span>
+            <span style="font-size:13px; color:#AFB8B5">المطابقة الضبابية · <span style="font-family:Outfit,sans-serif">Fuzzy Matching</span></span>
+          </div>
+          <p style="margin:0; font-size:clamp(21px,2.3vw,27px); font-weight:600; line-height:1.5; color:#09483D; text-wrap:pretty">نقرأ الاسم كما كتبته، لا كما يجب أن يكون</p>
+          <p style="margin:16px 0 0; font-size:16px; line-height:1.95; color:#16221F; opacity:.78">نقيس قرب ما كتبته من كل اسم مسجّل في القاعدة، ونعرض أقرب الأسماء مع نسبة التطابق لتؤكّد أنت، بدل أن نرفض المدخل.</p>
+          <a href="./RxChef Algorithm.dc.html#fuzzy" style="display:inline-block; margin-top:22px; font-size:15px">اعرف أكتر ←</a>
+        </div>
+        <div style="display:grid; gap:8px">
+          <div dir="ltr" style="display:flex; align-items:center; gap:12px; background:#F6F5F1; border-radius:14px; padding:13px 15px">
+            <span style="font-family:Outfit,sans-serif; font-size:13.5px; color:#16221F; opacity:.55; text-decoration:line-through">Metfformin</span>
+            <span style="flex:1; height:1px; background:linear-gradient(90deg, rgba(175,184,181,.7), rgba(52,143,128,.5))"></span>
+            <span style="font-family:Outfit,sans-serif; font-size:14.5px; color:#09483D">Metformin 500mg</span>
+            <span style="font-family:Outfit,sans-serif; font-size:12.5px; color:#348F80; background:rgba(52,143,128,.12); padding:4px 9px; border-radius:8px">97%</span>
+          </div>
+          <div dir="ltr" style="display:flex; align-items:center; gap:12px; background:#F6F5F1; border-radius:14px; padding:13px 15px">
+            <span style="font-family:Outfit,sans-serif; font-size:13.5px; color:#16221F; opacity:.55; text-decoration:line-through">Amoxicilin</span>
+            <span style="flex:1; height:1px; background:linear-gradient(90deg, rgba(175,184,181,.7), rgba(52,143,128,.5))"></span>
+            <span style="font-family:Outfit,sans-serif; font-size:14.5px; color:#09483D">Amoxicillin 500mg</span>
+            <span style="font-family:Outfit,sans-serif; font-size:12.5px; color:#348F80; background:rgba(52,143,128,.12); padding:4px 9px; border-radius:8px">95%</span>
+          </div>
+          <div dir="ltr" style="display:flex; align-items:center; gap:12px; background:#F6F5F1; border-radius:14px; padding:13px 15px; border:1px dashed rgba(175,184,181,.75)">
+            <span style="font-family:Outfit,sans-serif; font-size:13.5px; color:#16221F; opacity:.6">Vitacomplex</span>
+            <span style="flex:1; height:1px; background:rgba(175,184,181,.5)"></span>
+            <span dir="rtl" style="font-size:12.5px; color:#C08A3E">لا مقابل مسجّل</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(150deg,#0C4A3F,#296F62 62%,#3B8477); border-radius:26px; padding:clamp(28px,4vw,46px); box-shadow:0 30px 66px -40px rgba(9,72,61,.55)">
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:20px">
+          <span style="display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:rgba(246,245,241,.14); border:1px solid rgba(246,245,241,.3); font-family:Outfit,sans-serif; font-size:15px; color:#F6F5F1">02</span>
+          <span style="font-size:13px; color:rgba(246,245,241,.6)">فحص التفاعلات · <span style="font-family:Outfit,sans-serif">Interaction Check</span></span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(24px,4vw,52px); align-items:center">
+          <div>
+            <p style="margin:0; font-size:clamp(21px,2.3vw,27px); font-weight:600; line-height:1.5; color:#F6F5F1; text-wrap:pretty">نفحص الوصفة كلها، لا الدواء الجديد فقط</p>
+            <p style="margin:16px 0 0; font-size:16px; line-height:1.95; color:rgba(246,245,241,.8)">نبني كل الأزواج الممكنة داخل التركيبة ونفحصها واحدًا واحدًا، فالتفاعل قد يكون بين دوائين قديمين لم يلاحظهما أحد.</p>
+            <a href="./RxChef Algorithm.dc.html#interaction" style="display:inline-block; margin-top:22px; font-size:15px; color:#D89A83">اعرف أكتر ←</a>
+          </div>
+          <div dir="ltr" style="display:flex; align-items:center; justify-content:center; gap:clamp(20px,4vw,40px)">
+            <div style="text-align:center">
+              <p style="margin:0; font-family:Outfit,sans-serif; font-size:clamp(40px,5vw,64px); line-height:1; color:#F6F5F1; font-weight:500">4</p>
+              <p dir="rtl" style="margin:10px 0 0; font-size:13.5px; color:rgba(246,245,241,.62)">أدوية في الوصفة</p>
+            </div>
+            <span style="font-family:Outfit,sans-serif; font-size:26px; color:rgba(246,245,241,.4)">→</span>
+            <div style="text-align:center">
+              <p style="margin:0; font-family:Outfit,sans-serif; font-size:clamp(40px,5vw,64px); line-height:1; color:#D89A83; font-weight:500">6</p>
+              <p dir="rtl" style="margin:10px 0 0; font-size:13.5px; color:rgba(246,245,241,.62)">أزواج تُفحص كلها</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(24px,4vw,56px); align-items:center; background:#FFFEFB; border:1px solid rgba(175,184,181,.42); border-radius:26px; padding:clamp(26px,3.4vw,40px); box-shadow:0 24px 54px -40px rgba(9,72,61,.34)">
+        <div style="display:grid; gap:9px">
+          <div style="transform:rotate(-1.4deg); background:#F6F5F1; border:1px solid rgba(52,143,128,.3); border-radius:14px; padding:13px 15px; display:flex; align-items:center; gap:12px; box-shadow:0 10px 22px -18px rgba(9,72,61,.5)">
+            <span style="font-family:Outfit,sans-serif; font-size:12.5px; color:#348F80">1</span>
+            <span dir="ltr" style="flex:1; font-family:Outfit,sans-serif; font-size:14.5px; color:#09483D; text-align:right">Nifedipine SR 30mg</span>
+            <span style="font-size:12px; color:#348F80; background:rgba(52,143,128,.12); padding:4px 9px; border-radius:8px; white-space:nowrap">لا تفاعل جديد</span>
+          </div>
+          <div style="transform:rotate(.9deg); background:#F6F5F1; border-radius:14px; padding:13px 15px; display:flex; align-items:center; gap:12px">
+            <span style="font-family:Outfit,sans-serif; font-size:12.5px; color:#AFB8B5">2</span>
+            <span dir="ltr" style="flex:1; font-family:Outfit,sans-serif; font-size:14.5px; color:#09483D; text-align:right">Felodipine 5mg</span>
+            <span style="font-size:12px; color:#AFB8B5; white-space:nowrap">توفّر أضيق</span>
+          </div>
+          <div style="transform:rotate(-.7deg); background:#F6F5F1; border-radius:14px; padding:13px 15px; display:flex; align-items:center; gap:12px; opacity:.9">
+            <span style="font-family:Outfit,sans-serif; font-size:12.5px; color:#AFB8B5">3</span>
+            <span dir="ltr" style="flex:1; font-family:Outfit,sans-serif; font-size:14.5px; color:#09483D; text-align:right">Diltiazem SR 120mg</span>
+            <span style="font-size:12px; color:#C08A3E; background:rgba(192,138,62,.12); padding:4px 9px; border-radius:8px; white-space:nowrap">يضيف تفاعلًا</span>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; gap:14px; margin-bottom:18px">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:rgba(216,154,131,.18); border:1px solid rgba(216,154,131,.42); font-family:Outfit,sans-serif; font-size:15px; color:#09483D">03</span>
+            <span style="font-size:13px; color:#AFB8B5">ترتيب البدائل · <span style="font-family:Outfit,sans-serif">Alternative Ranking</span></span>
+          </div>
+          <p style="margin:0; font-size:clamp(21px,2.3vw,27px); font-weight:600; line-height:1.5; color:#09483D; text-wrap:pretty">نرتّب البدائل، لا نرمي قائمة</p>
+          <p style="margin:16px 0 0; font-size:16px; line-height:1.95; color:#16221F; opacity:.78">كل بديل يُوزن بثلاثة أوزان: التكافؤ العلاجي، التوفّر الفعلي، وأثره على بقية التركيبة. البديل الذي يحلّ مشكلة ويخلق أخرى ينزل ترتيبه.</p>
+          <a href="./RxChef Algorithm.dc.html#ranking" style="display:inline-block; margin-top:22px; font-size:15px">اعرف أكتر ←</a>
+        </div>
+      </div>
+
+      <div style="background:#FFFEFB; border:1px solid rgba(175,184,181,.42); border-radius:26px; padding:clamp(26px,3.4vw,40px); box-shadow:0 24px 54px -40px rgba(9,72,61,.34)">
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap">
+          <div style="max-width:46ch">
+            <div style="display:flex; align-items:center; gap:14px; margin-bottom:18px">
+              <span style="display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:rgba(192,138,62,.14); border:1px solid rgba(192,138,62,.36); font-family:Outfit,sans-serif; font-size:15px; color:#09483D">04</span>
+              <span style="font-size:13px; color:#AFB8B5">تصنيف الشدة · <span style="font-family:Outfit,sans-serif">Severity Classification</span></span>
+            </div>
+            <p style="margin:0; font-size:clamp(21px,2.3vw,27px); font-weight:600; line-height:1.5; color:#09483D; text-wrap:pretty">نقول شدّة التفاعل بلغة قرار</p>
+            <p style="margin:16px 0 0; font-size:16px; line-height:1.95; color:#16221F; opacity:.78">كل تفاعل يأخذ درجة واحدة من ثلاث، ومع الدرجة جملة تقول ماذا يفعل الطبيب: يتابع، يراقب مخبريًا، أو يعيد النظر في المكوّن.</p>
+          </div>
+          <a href="./RxChef Algorithm.dc.html#severity" style="font-size:15px">اعرف أكتر ←</a>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:10px; margin-top:26px">
+          <div style="background:#F6F5F1; border-radius:16px; padding:18px; border-top:3px solid #B5473A">
+            <p style="margin:0; font-size:15px; font-weight:500; color:#09483D">شدة عالية</p>
+            <p style="margin:8px 0 0; font-size:14px; line-height:1.75; color:#16221F; opacity:.7">يعيد النظر في المكوّن — قرار صريح مطلوب.</p>
+          </div>
+          <div style="background:#F6F5F1; border-radius:16px; padding:18px; border-top:3px solid #C08A3E">
+            <p style="margin:0; font-size:15px; font-weight:500; color:#09483D">شدة متوسطة</p>
+            <p style="margin:8px 0 0; font-size:14px; line-height:1.75; color:#16221F; opacity:.7">يراقب مخبريًا أو يفصل الجرعات بأربع ساعات.</p>
+          </div>
+          <div style="background:#F6F5F1; border-radius:16px; padding:18px; border-top:3px solid #AFB8B5">
+            <p style="margin:0; font-size:15px; font-weight:500; color:#09483D">شدة منخفضة</p>
+            <p style="margin:8px 0 0; font-size:14px; line-height:1.75; color:#16221F; opacity:.7">يُذكر للمريض ولا يُغيَّر في الوصفة.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8" />
+<title>RxChef — لوحة الإدارة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  body { margin:0; background:#F1F2EF; color:#16221F; font-family:'IBM Plex Sans Arabic', system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#348F80; text-decoration:none; }
+  a:hover { color:#D89A83; }
+  input, textarea, select { font-family:inherit; }
+  input:focus, select:focus { outline:none; border-color:rgba(52,143,128,.55); }
+</style>
+</helmet>
+<div dir="rtl" style="min-height:100vh; background:#F1F2EF">
+
+  <sc-if value="{{ loggedOut }}" hint-placeholder-val="{{ true }}">
+    <div style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; box-sizing:border-box; background:linear-gradient(170deg,#F1F2EF,#EDEFEB)">
+      <div style="width:100%; max-width:390px">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:22px">
+          <img src="uploads/logo%20RxChef.jpg" alt="RxChef" style="height:34px; width:auto; mix-blend-mode:multiply" />
+          <span style="font-size:12.5px; letter-spacing:.08em; color:#AFB8B5">لوحة الإدارة</span>
+        </div>
+        <div style="background:#FFFEFB; border:1px solid rgba(175,184,181,.5); border-radius:16px; padding:26px">
+          <p style="margin:0 0 4px; font-size:17px; font-weight:600; color:#09483D">تسجيل الدخول</p>
+          <p style="margin:0 0 22px; font-size:13.5px; line-height:1.7; color:#AFB8B5">حساب واحد ثابت لإدارة قاعدة الأدوية والسجلات.</p>
+          <div style="display:grid; gap:14px">
+            <label style="display:block">
+              <span style="display:block; margin-bottom:7px; font-size:13.5px; color:#09483D">اسم المستخدم</span>
+              <input value="{{ user }}" onChange="{{ onUser }}" dir="ltr" placeholder="admin" style="width:100%; box-sizing:border-box; background:#F6F5F1; border:1px solid rgba(175,184,181,.55); border-radius:10px; padding:12px 13px; font-family:Outfit,sans-serif; font-size:15px; color:#16221F; text-align:right; transition:border-color .2s ease" />
+            </label>
+            <label style="display:block">
+              <span style="display:block; margin-bottom:7px; font-size:13.5px; color:#09483D">كلمة المرور</span>
+              <input value="{{ pass }}" onChange="{{ onPass }}" onKeyDown="{{ onKey }}" type="password" dir="ltr" placeholder="••••••••" style="width:100%; box-sizing:border-box; background:#F6F5F1; border:1px solid rgba(175,184,181,.55); border-radius:10px; padding:12px 13px; font-family:Outfit,sans-serif; font-size:15px; color:#16221F; text-align:right; transition:border-color .2s ease" />
+            </label>
+            <sc-if value="{{ loginError }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0; font-size:13px; color:#B5473A">بيانات الدخول غير صحيحة.</p>
+            </sc-if>
+            <button onClick="{{ login }}" style="border:0; font-family:inherit; cursor:pointer; margin-top:4px; background:#348F80; color:#F6F5F1; padding:13px 20px; border-radius:11px; font-size:15.5px; font-weight:500; transition:background .25s ease" style-hover="background:#2E8274">دخول</button>
+          </div>
+        </div>
+        <p style="margin:16px 2px 0; font-size:12.5px; color:#AFB8B5">للتجربة: <span dir="ltr" style="font-family:Outfit,sans-serif">admin / rxchef2026</span> · <a href="./RxChef Home.dc.html">الموقع العام</a></p>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ loggedIn }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid; grid-template-columns:230px minmax(0,1fr); min-height:100vh">
+
+      <aside style="background:#FFFEFB; border-left:1px solid rgba(175,184,181,.5); padding:22px 16px; display:flex; flex-direction:column; gap:24px">
+        <img src="uploads/logo%20RxChef.jpg" alt="RxChef" style="height:32px; width:auto; align-self:flex-start; mix-blend-mode:multiply" />
+        <nav style="display:grid; gap:4px">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+            <span role="button" onClick="{{ t.pick }}" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:11px 13px; border-radius:10px; font-size:14.5px; background:{{ t.bg }}; color:{{ t.color }}">
+              <span>{{ t.label }}</span>
+              <span style="font-family:Outfit,sans-serif; font-size:12.5px; color:#AFB8B5">{{ t.count }}</span>
+            </span>
+          </sc-for>
+        </nav>
+        <div style="margin-top:auto; display:grid; gap:10px">
+          <a href="./RxChef Home.dc.html" style="font-size:13.5px; color:#AFB8B5">الموقع العام ←</a>
+          <span role="button" onClick="{{ logout }}" style="cursor:pointer; font-size:13.5px; color:#AFB8B5">خروج</span>
+        </div>
+      </aside>
+
+      <main style="padding:26px clamp(20px,3vw,38px) 60px; min-width:0">
+
+        <sc-if value="{{ isMeds }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:20px">
+              <div>
+                <p style="margin:0; font-size:20px; font-weight:600; color:#09483D">قاعدة الأدوية</p>
+                <p style="margin:7px 0 0; font-size:13.5px; color:#AFB8B5">{{ medsCountLabel }}</p>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+                <input value="{{ search }}" onChange="{{ onSearch }}" placeholder="ابحث بالاسم أو التصنيف…" style="width:250px; box-sizing:border-box; background:#FFFEFB; border:1px solid rgba(175,184,181,.55); border-radius:10px; padding:11px 13px; font-size:14.5px; color:#16221F; transition:border-color .2s ease" />
+                <button onClick="{{ newMed }}" style="border:0; font-family:inherit; cursor:pointer; background:#348F80; color:#F6F5F1; padding:11px 20px; border-radius:10px; font-size:14.5px; font-weight:500; white-space:nowrap; transition:background .25s ease" style-hover="background:#2E8274">إضافة دواء</button>
+              </div>
+            </div>
+
+            <sc-if value="{{ editing }}" hint-placeholder-val="{{ false }}">
+              <div style="background:#FFFEFB; border:1px solid rgba(52,143,128,.35); border-radius:14px; padding:20px; margin-bottom:14px">
+                <p style="margin:0 0 16px; font-size:15px; font-weight:600; color:#09483D">{{ formTitle }}</p>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px">
+                  <label style="display:block">
+                    <span style="display:block; margin-bottom:7px; font-size:13px; color:#09483D">الاسم والجرعة</span>
+                    <input value="{{ fName }}" onChange="{{ onFName }}" dir="ltr" placeholder="Metformin 500mg" style="width:100%; box-sizing:border-box; background:#F6F5F1; border:1px solid rgba(175,184,181,.55); border-radius:10px; padding:11px 13px; font-family:Outfit,sans-serif; font-size:14.5px; color:#16221F; text-align:right" />
+                  </label>
+                  <label style="display:block">
+                    <span style="display:block; margin-bottom:7px; font-size:13px; color:#09483D">التصنيف العلاجي</span>
+                    <input value="{{ fCat }}" onChange="{{ onFCat }}" placeholder="سكري — بيغوانيد" style="width:100%; box-sizing:border-box; background:#F6F5F1; border:1px solid rgba(175,184,181,.55); border-radius:10px; padding:11px 13px; font-size:14.5px; color:#16221F" />
+                  </label>
+                  <label style="display:block">
+                    <span style="display:block; margin-bottom:7px; font-size:13px; color:#09483D">التوفّر</span>
+                    <select value="{{ fAvail }}" onChange="{{ onFAvail }}" style="width:100%; box-sizing:border-box; background:#F6F5F1; border:1px solid rgba(175,184,181,.55); border-radius:10px; padding:11px 13px; font-size:14.5px; color:#16221F">
+                      <option value="yes">متوفّر</option>
+                      <option value="no">غير متوفّر</option>
+                    </select>
+                  </label>
+                </div>
+                <div style="display:flex; align-items:center; gap:12px; margin-top:18px">
+                  <button onClick="{{ saveMed }}" style="border:0; font-family:inherit; cursor:pointer; background:#348F80; color:#F6F5F1; padding:11px 22px; border-radius:10px; font-size:14.5px; font-weight:500; transition:background .25s ease" style-hover="background:#2E8274">حفظ</button>
+                  <span role="button" onClick="{{ cancelMed }}" style="cursor:pointer; font-size:14px; color:#AFB8B5">إلغاء</span>
+                </div>
+              </div>
+            </sc-if>
+
+            <div style="background:#FFFEFB; border:1px solid rgba(175,184,181,.5); border-radius:14px; overflow:hidden">
+              <div style="display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1.4fr) 110px 130px; gap:12px; padding:13px 18px; background:#F6F5F1; border-bottom:1px solid rgba(175,184,181,.45); font-size:12.5px; color:#AFB8B5">
+                <span>الاسم والجرعة</span>
+                <span>التصنيف</span>
+                <span>التوفّر</span>
+                <span></span>
+              </div>
+              <sc-for list="{{ meds }}" as="m" hint-placeholder-count="6">
+                <div style="display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1.4fr) 110px 130px; gap:12px; align-items:center; padding:14px 18px; border-bottom:1px solid rgba(175,184,181,.3)">
+                  <span dir="ltr" style="font-family:Outfit,sans-serif; font-size:14.5px; color:#09483D; text-align:right; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{{ m.name }}</span>
+                  <span style="font-size:14px; color:#16221F; opacity:.72; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{{ m.category }}</span>
+                  <span style="font-size:12.5px; color:{{ m.statusColor }}; background:{{ m.statusBg }}; padding:4px 10px; border-radius:8px; justify-self:start; white-space:nowrap">{{ m.status }}</span>
+                  <span style="display:flex; align-items:center; gap:14px; justify-content:flex-end">
+                    <span role="button" onClick="{{ m.edit }}" style="cursor:pointer; font-size:13.5px; color:#348F80">تعديل</span>
+                    <span role="button" onClick="{{ m.remove }}" style="cursor:pointer; font-size:13.5px; color:{{ m.delColor }}">{{ m.delLabel }}</span>
+                  </span>
+                </div>
+              </sc-for>
+              <sc-if value="{{ noMeds }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0; padding:26px 18px; font-size:14px; color:#AFB8B5">لا نتيجة مطابقة لهذا البحث.</p>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isLog }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <p style="margin:0; font-size:20px; font-weight:600; color:#09483D">سجل العمليات</p>
+            <p style="margin:7px 0 20px; font-size:13.5px; color:#AFB8B5">كل تحليل جرى على الأداة، مع عدد التفاعلات المكتشفة والبدائل المقترحة.</p>
+            <div style="background:#FFFEFB; border:1px solid rgba(175,184,181,.5); border-radius:14px; overflow:hidden">
+              <div style="display:grid; grid-template-columns:minmax(0,1.4fr) 110px minmax(0,1fr) minmax(0,1fr); gap:12px; padding:13px 18px; background:#F6F5F1; border-bottom:1px solid rgba(175,184,181,.45); font-size:12.5px; color:#AFB8B5">
+                <span>الوقت</span>
+                <span>المكوّنات</span>
+                <span>تفاعلات مكتشفة</span>
+                <span>بدائل مقترحة</span>
+              </div>
+              <sc-for list="{{ logs }}" as="l" hint-placeholder-count="8">
+                <div style="display:grid; grid-template-columns:minmax(0,1.4fr) 110px minmax(0,1fr) minmax(0,1fr); gap:12px; align-items:center; padding:14px 18px; border-bottom:1px solid rgba(175,184,181,.3)">
+                  <span dir="ltr" style="font-family:Outfit,sans-serif; font-size:14px; color:#16221F; opacity:.8; text-align:right">{{ l.time }}</span>
+                  <span style="font-family:Outfit,sans-serif; font-size:14px; color:#09483D">{{ l.drugs }}</span>
+                  <span style="display:flex; align-items:center; gap:9px">
+                    <span style="font-family:Outfit,sans-serif; font-size:14px; color:#09483D">{{ l.interactions }}</span>
+                    <span style="font-size:12.5px; color:{{ l.sevColor }}; background:{{ l.sevBg }}; padding:4px 9px; border-radius:8px; white-space:nowrap">{{ l.sevLabel }}</span>
+                  </span>
+                  <span style="font-family:Outfit,sans-serif; font-size:14px; color:#09483D">{{ l.alternatives }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isMsgs }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <p style="margin:0; font-size:20px; font-weight:600; color:#09483D">الرسائل</p>
+            <p style="margin:7px 0 20px; font-size:13.5px; color:#AFB8B5">ملاحظات واردة من نموذج التواصل.</p>
+            <div style="display:grid; gap:10px">
+              <sc-for list="{{ messages }}" as="msg" hint-placeholder-count="4">
+                <div style="background:#FFFEFB; border:1px solid rgba(175,184,181,.5); border-radius:14px; padding:18px 20px">
+                  <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+                    <span style="font-size:15px; font-weight:500; color:#09483D">{{ msg.name }}</span>
+                    <span style="font-size:12.5px; color:#348F80; background:rgba(52,143,128,.10); padding:4px 10px; border-radius:8px">{{ msg.role }}</span>
+                    <span dir="ltr" style="font-family:Outfit,sans-serif; font-size:13px; color:#AFB8B5">{{ msg.email }}</span>
+                    <span dir="ltr" style="margin-right:auto; font-family:Outfit,sans-serif; font-size:13px; color:#AFB8B5">{{ msg.time }}</span>
+                  </div>
+                  <p style="margin:12px 0 0; font-size:14.5px; line-height:1.85; color:#16221F; opacity:.78">{{ msg.body }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+      </main>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:860}}">
+const SEED_MEDS = [
+  { id: 1, name: "Metformin 500mg", category: "سكري — بيغوانيد", available: true },
+  { id: 2, name: "Lisinopril 10mg", category: "ضغط — مثبط ACE", available: true },
+  { id: 3, name: "Atorvastatin 20mg", category: "دهون — ستاتين", available: true },
+  { id: 4, name: "Amlodipine 5mg", category: "ضغط — حاصر قنوات كالسيوم", available: false },
+  { id: 5, name: "Clarithromycin 500mg", category: "مضاد حيوي — ماكروليد", available: true },
+  { id: 6, name: "Spironolactone 25mg", category: "مدرّ بول موفّر للبوتاسيوم", available: true },
+  { id: 7, name: "Amoxicillin 500mg", category: "مضاد حيوي — بنسلين", available: true },
+  { id: 8, name: "Warfarin 5mg", category: "مضاد تخثر", available: true },
+  { id: 9, name: "Aspirin 81mg", category: "مضاد صفيحات", available: true },
+  { id: 10, name: "Omeprazole 20mg", category: "مثبط مضخة البروتون", available: true },
+  { id: 11, name: "Ibuprofen 400mg", category: "مضاد التهاب غير ستيروئيدي", available: true },
+  { id: 12, name: "Furosemide 40mg", category: "مدرّ بول عروي", available: true },
+  { id: 13, name: "Levothyroxine 50mcg", category: "هرمون درقي", available: false },
+  { id: 14, name: "Insulin Glargine 100U/ml", category: "أنسولين طويل المفعول", available: true }
+];
+
+const LOGS = [
+  { time: "2026-08-24 09:12", drugs: 5, interactions: 3, alternatives: 3, top: "high" },
+  { time: "2026-08-24 08:47", drugs: 4, interactions: 1, alternatives: 0, top: "medium" },
+  { time: "2026-08-23 17:35", drugs: 6, interactions: 4, alternatives: 5, top: "high" },
+  { time: "2026-08-23 14:02", drugs: 3, interactions: 0, alternatives: 2, top: "none" },
+  { time: "2026-08-23 11:20", drugs: 5, interactions: 2, alternatives: 0, top: "medium" },
+  { time: "2026-08-22 16:58", drugs: 4, interactions: 1, alternatives: 3, top: "low" },
+  { time: "2026-08-22 10:41", drugs: 7, interactions: 5, alternatives: 4, top: "high" },
+  { time: "2026-08-21 15:09", drugs: 3, interactions: 0, alternatives: 0, top: "none" }
+];
+
+const SEV = {
+  high:   { label: "أعلاها عالية", color: "#B5473A", bg: "rgba(181,71,58,.10)" },
+  medium: { label: "أعلاها متوسطة", color: "#C08A3E", bg: "rgba(192,138,62,.12)" },
+  low:    { label: "أعلاها منخفضة", color: "#348F80", bg: "rgba(52,143,128,.10)" },
+  none:   { label: "بلا تفاعل", color: "#AFB8B5", bg: "rgba(175,184,181,.16)" }
+};
+
+const MESSAGES = [
+  { name: "د. سارة الحسن", role: "طبيب", email: "s.hassan@clinic.example", time: "2026-08-24 08:05",
+    body: "الأداة لم تتعرّف على Rosuvastatin 10mg، مع أنه شائع جدًا في وصفاتنا. أرجو إضافته إلى القاعدة." },
+  { name: "أحمد درويش", role: "صيدلي", email: "a.darwish@pharma.example", time: "2026-08-23 19:22",
+    body: "تنبيه Omeprazole مع Levothyroxine ظهر كمتوسط، ونحن نتعامل معه بفصل الجرعات فقط. الشرح كان واضحًا ومفيدًا للمريض." },
+  { name: "ليان مرعي", role: "طالب", email: "layan.marei@uni.example", time: "2026-08-22 13:47",
+    body: "هل يمكن الحصول على ورقة المنهجية؟ أعمل على مشروع تخرّج في المعلوماتية الصيدلانية." },
+  { name: "د. خالد نصر", role: "طبيب", email: "k.nasr@hospital.example", time: "2026-08-21 09:30",
+    body: "اقتراح: إظهار تاريخ آخر تحديث للتوفّر بجانب كل دواء في التقرير، لا في أسفل الصفحة فقط." }
+];
+
+class Component extends DCLogic {
+  state = {
+    auth: false, user: "", pass: "", loginError: false,
+    tab: "meds", search: "",
+    meds: SEED_MEDS.slice(),
+    editing: null, confirmDel: null
+  };
+
+  tryLogin() {
+    const ok = this.state.user.trim() === "admin" && this.state.pass === "rxchef2026";
+    this.setState(ok ? { auth: true, loginError: false, pass: "" } : { loginError: true });
+  }
+
+  saveMed() {
+    const e = this.state.editing;
+    if (!e || !e.name.trim()) return;
+    this.setState(s => {
+      const meds = s.meds.slice();
+      const rec = { id: e.id || Date.now(), name: e.name.trim(), category: e.category.trim() || "غير مصنّف", available: e.available };
+      const i = meds.findIndex(m => m.id === e.id);
+      if (i >= 0) meds[i] = rec; else meds.unshift(rec);
+      return { meds, editing: null };
+    });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const q = s.search.trim().toLowerCase();
+    const filtered = s.meds.filter(m => !q || m.name.toLowerCase().includes(q) || m.category.includes(s.search.trim()));
+    const e = s.editing;
+
+    const tabs = [
+      { id: "meds", label: "قاعدة الأدوية", count: s.meds.length },
+      { id: "log", label: "سجل العمليات", count: LOGS.length },
+      { id: "msgs", label: "الرسائل", count: MESSAGES.length }
+    ];
+
+    return {
+      loggedOut: !s.auth, loggedIn: s.auth,
+      user: s.user, pass: s.pass, loginError: s.loginError,
+      onUser: ev => this.setState({ user: ev.target.value, loginError: false }),
+      onPass: ev => this.setState({ pass: ev.target.value, loginError: false }),
+      onKey: ev => { if (ev.key === "Enter") this.tryLogin(); },
+      login: () => this.tryLogin(),
+      logout: () => this.setState({ auth: false, user: "", pass: "", tab: "meds" }),
+
+      tabs: tabs.map(t => ({
+        label: t.label, count: t.count,
+        pick: () => this.setState({ tab: t.id, editing: null, confirmDel: null }),
+        bg: s.tab === t.id ? "rgba(52,143,128,.12)" : "transparent",
+        color: s.tab === t.id ? "#09483D" : "rgba(22,34,31,.7)"
+      })),
+      isMeds: s.tab === "meds", isLog: s.tab === "log", isMsgs: s.tab === "msgs",
+
+      search: s.search,
+      onSearch: ev => this.setState({ search: ev.target.value }),
+      medsCountLabel: filtered.length + " من " + s.meds.length + " دواء",
+      meds: filtered.map(m => ({
+        name: m.name, category: m.category,
+        status: m.available ? "متوفّر" : "غير متوفّر",
+        statusColor: m.available ? "#348F80" : "#B5473A",
+        statusBg: m.available ? "rgba(52,143,128,.10)" : "rgba(181,71,58,.10)",
+        edit: () => this.setState({ editing: { id: m.id, name: m.name, category: m.category, available: m.available }, confirmDel: null }),
+        delLabel: s.confirmDel === m.id ? "تأكيد الحذف" : "حذف",
+        delColor: s.confirmDel === m.id ? "#B5473A" : "#AFB8B5",
+        remove: () => {
+          if (s.confirmDel === m.id) this.setState(st => ({ meds: st.meds.filter(x => x.id !== m.id), confirmDel: null }));
+          else this.setState({ confirmDel: m.id });
+        }
+      })),
+      noMeds: filtered.length === 0,
+
+      editing: !!e,
+      formTitle: e && s.meds.some(m => m.id === e.id) ? "تعديل دواء" : "دواء جديد",
+      fName: e ? e.name : "", fCat: e ? e.category : "", fAvail: e ? (e.available ? "yes" : "no") : "yes",
+      onFName: ev => this.setState(st => ({ editing: Object.assign({}, st.editing, { name: ev.target.value }) })),
+      onFCat: ev => this.setState(st => ({ editing: Object.assign({}, st.editing, { category: ev.target.value }) })),
+      onFAvail: ev => this.setState(st => ({ editing: Object.assign({}, st.editing, { available: ev.target.value === "yes" }) })),
+      newMed: () => this.setState({ editing: { id: null, name: "", category: "", available: true }, confirmDel: null }),
+      saveMed: () => this.saveMed(),
+      cancelMed: () => this.setState({ editing: null }),
+
+      logs: LOGS.map(l => ({
+        time: l.time, drugs: l.drugs, interactions: l.interactions, alternatives: l.alternatives,
+        sevLabel: SEV[l.top].label, sevColor: SEV[l.top].color, sevBg: SEV[l.top].bg
+      })),
+      messages: MESSAGES
+    };
+  }
+}
+</script>
+</body>
+</html>

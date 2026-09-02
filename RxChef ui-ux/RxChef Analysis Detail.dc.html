@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8" />
+<title>RxChef — تفاصيل التحليل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  body { margin:0; background:#F6F5F1; color:#16221F; font-family:'IBM Plex Sans Arabic', system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#348F80; text-decoration:none; }
+  a:hover { color:#D89A83; }
+  @media print { .no-print { display:none !important; } }
+</style>
+</helmet>
+<div dir="rtl" style="min-height:100vh; padding:0 clamp(20px,7vw,110px) 96px; box-sizing:border-box; background:radial-gradient(64% 42% at 78% 4%, rgba(52,143,128,.10), transparent 70%), radial-gradient(52% 38% at 10% 92%, rgba(216,154,131,.13), transparent 72%), linear-gradient(165deg,#F4F6F3,#F6F5F1 46%,#F8F1EC)">
+
+  <header class="no-print" style="position:sticky; top:16px; z-index:5; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:12px 22px 12px 26px; max-width:1040px; margin:22px auto 0; box-sizing:border-box; background:linear-gradient(100deg, rgba(255,254,251,.82), rgba(244,246,243,.78)); backdrop-filter:blur(14px) saturate(1.1); -webkit-backdrop-filter:blur(14px) saturate(1.1); border:1px solid rgba(52,143,128,.16); border-radius:20px; box-shadow:0 12px 30px -22px rgba(9,72,61,.4)">
+    <img src="uploads/logo%20RxChef.jpg" alt="RxChef" style="height:38px; width:auto; mix-blend-mode:multiply" />
+    <nav style="display:flex; align-items:center; gap:clamp(12px,1.9vw,26px); font-size:14.5px; justify-content:flex-end; white-space:nowrap">
+      <a href="./RxChef Tool.dc.html" style="color:#09483D">الأداة</a>
+      <a href="./RxChef How It Works.dc.html" style="color:#09483D">كيف يعمل</a>
+      <a href="./RxChef About.dc.html" style="color:#09483D">عن المشروع</a>
+      <a href="./RxChef FAQ.dc.html" style="color:#09483D">أسئلة شائعة</a>
+      <a href="./RxChef Contact.dc.html" style="color:#09483D">تواصل</a>
+    </nav>
+  </header>
+
+  <main style="max-width:1040px; margin:0 auto">
+
+    <section style="padding:clamp(44px,8vh,80px) 0 clamp(28px,4vh,44px)">
+      <p style="margin:0 0 14px; font-size:13px; letter-spacing:.1em; color:#AFB8B5">تفاصيل التحليل</p>
+      <h1 style="margin:0; font-size:clamp(30px,3.6vw,46px); line-height:1.3; font-weight:600; color:#09483D; letter-spacing:-.01em; max-width:26ch; text-wrap:pretty">خطوات العمل الكاملة على هذه التركيبة</h1>
+      <p style="margin:20px 0 0; max-width:52ch; font-size:16.5px; line-height:1.9; color:#16221F; opacity:.76">أربع مراحل، كل واحدة موسّعة بما رآه النظام حرفيًا: المدخل، ما طابقه، ودرجة الثقة. لا شيء مخفي.</p>
+      <p style="margin:18px 0 0; font-size:14px; color:#AFB8B5">وصفة <span style="font-family:Outfit,sans-serif; color:#09483D">RX-2481</span> · مريض ٦٢ عامًا · النموذج <span style="font-family:Outfit,sans-serif; color:#09483D">RxChef v2.1</span></p>
+    </section>
+
+    <section style="display:grid; gap:14px">
+
+      <div style="background:#FFFEFB; border:1px solid rgba(175,184,181,.4); border-radius:22px; overflow:hidden; box-shadow:0 20px 46px -34px rgba(9,72,61,.34)">
+        <div role="button" onClick="{{ toggle1 }}" style="display:flex; align-items:center; gap:16px; padding:22px 24px; cursor:pointer">
+          <span style="font-family:Outfit,sans-serif; font-size:13px; color:#AFB8B5; width:22px">01</span>
+          <span style="flex:1; font-size:18px; font-weight:600; color:#09483D">قراءة الوصفة ومطابقة الأسماء</span>
+          <span style="font-size:13.5px; color:#AFB8B5">٤ مدخلات · مطابقة كلها</span>
+          <span style="font-family:Outfit,sans-serif; font-size:19px; color:#348F80; width:18px; text-align:center">{{ caret1 }}</span>
+        </div>
+        <sc-if value="{{ open1 }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:0 24px 24px">
+            <div style="display:grid; gap:9px">
+              <div style="display:grid; grid-template-columns:1fr auto 1fr auto; align-items:center; gap:14px; background:#F6F5F1; border-radius:14px; padding:14px 16px">
+                <span dir="ltr" style="font-family:Outfit,sans-serif; font-size:14.5px; color:#16221F; opacity:.62; text-align:right">Amoxicilin 500</span>
+                <span style="color:#AFB8B5; font-family:Outfit,sans-serif">←</span>
+                <span dir="ltr" style="font-family:Outfit,sans-serif; font-size:15px; color:#09483D">Amoxicillin 500mg</span>
+                <span style="font-family:Outfit,sans-serif; font-size:13.5px; color:#348F80; background:rgba(52,143,128,.10); padding:5px 10px; border-radius:9px; white-space:nowrap">95%</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr auto 1fr auto; align-items:center; gap:14px; background:#F6F5F1; border-radius:14px; padding:14px 16px">
+                <span dir="ltr" style="font-family:Outfit,sans-serif; font-size:14.5px; color:#16221F; opacity:.62; text-align:right">Metfformin</span>
+                <span style="color:#AFB8B5; font-family:Outfit,sans-serif">←</span>
+                <span dir="ltr" style="font-family:Outfit,sans-serif; font-size:15px; color:#09483D">Metformin 500mg</span>
+                <span style="font-family:Outfit,sans-serif; font-size:13.5px; color:#348F80; background:rgba(52,143,128,.10); padding:5px 10px; border-radius:9px; white-space:nowrap">97%</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr auto 1fr auto; align-items:center; gap:14px; background:#F6F5F1; border-radius:14px; padding:14px 16px">
+                <span dir="ltr" style="font-family:Outfit,sans-serif; font-size:14.5px; color:#16221F; opacity:.62; text-align:right">Lisinopril 10</span>
+                <span style="color:#AFB8B5; font-family:Outfit,sans-serif">←</span>
+                <span dir="ltr" style="font-family:Outfit,sans-serif; font-size:15px; color:#09483D">Lisinopril 10mg</span>
+                <span style="font-family:Outfit,sans-serif; font-size:13.5px; color:#348F80; background:rgba(52,143,128,.10); padding:5px 10px; border-radius:9px; white-space:nowrap">99%</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr auto 1fr auto; align-items:center; gap:14px; background:#F6F5F1; border-radius:14px; padding:14px 16px">
+                <span dir="ltr" style="font-family:Outfit,sans-serif; font-size:14.5px; color:#16221F; opacity:.62; text-align:right">Amlodipin 5</span>
+                <span style="color:#AFB8B5; font-family:Outfit,sans-serif">←</span>
+                <span dir="ltr" style="font-family:Outfit,sans-serif; font-size:15px; color:#09483D">Amlodipine 5mg</span>
+                <span style="font-family:Outfit,sans-serif; font-size:13.5px; color:#C08A3E; background:rgba(192,138,62,.12); padding:5px 10px; border-radius:9px; white-space:nowrap">88%</span>
+              </div>
+            </div>
+            <p style="margin:16px 0 0; font-size:14px; line-height:1.85; color:#16221F; opacity:.68">المطابقة تعتمد على تشابه الحروف مع المرادفات المسجّلة في قاعدة الأسماء الدوائية. أي مدخل تحت <span style="font-family:Outfit,sans-serif; font-size:.95em">90%</span> يُعرض للطبيب للتأكيد قبل المتابعة.</p>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="background:#FFFEFB; border:1px solid rgba(175,184,181,.4); border-radius:22px; overflow:hidden; box-shadow:0 20px 46px -34px rgba(9,72,61,.34)">
+        <div role="button" onClick="{{ toggle2 }}" style="display:flex; align-items:center; gap:16px; padding:22px 24px; cursor:pointer">
+          <span style="font-family:Outfit,sans-serif; font-size:13px; color:#AFB8B5; width:22px">02</span>
+          <span style="flex:1; font-size:18px; font-weight:600; color:#09483D">فحص التفاعلات داخل التركيبة</span>
+          <span style="font-size:13.5px; color:#AFB8B5">٦ أزواج · ٣ نتائج</span>
+          <span style="font-family:Outfit,sans-serif; font-size:19px; color:#348F80; width:18px; text-align:center">{{ caret2 }}</span>
+        </div>
+        <sc-if value="{{ open2 }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:0 24px 24px">
+            <div style="display:grid; gap:9px">
+              <div style="display:flex; align-items:flex-start; gap:13px; background:#F6F5F1; border-radius:14px; padding:15px 16px">
+                <span style="width:8px; height:8px; border-radius:50%; background:#B5473A; margin-top:7px; flex:none"></span>
+                <div style="flex:1">
+                  <p dir="ltr" style="margin:0; font-family:Outfit,sans-serif; font-size:14.5px; color:#09483D; text-align:right">Atorvastatin 20mg × Clarithromycin 500mg</p>
+                  <p style="margin:7px 0 0; font-size:14px; line-height:1.8; color:#16221F; opacity:.72">تثبيط إنزيم <span style="font-family:Outfit,sans-serif; font-size:.95em">CYP3A4</span> يرفع تركيز الستاتين ويزيد خطر اعتلال العضلات. يُفضّل إيقاف الستاتين مؤقتًا مدة المضاد الحيوي.</p>
+                </div>
+                <span style="font-size:13px; color:#B5473A; background:rgba(181,71,58,.10); padding:5px 11px; border-radius:9px; white-space:nowrap">شدة عالية</span>
+              </div>
+              <div style="display:flex; align-items:flex-start; gap:13px; background:#F6F5F1; border-radius:14px; padding:15px 16px">
+                <span style="width:8px; height:8px; border-radius:50%; background:#C08A3E; margin-top:7px; flex:none"></span>
+                <div style="flex:1">
+                  <p dir="ltr" style="margin:0; font-family:Outfit,sans-serif; font-size:14.5px; color:#09483D; text-align:right">Lisinopril 10mg × Spironolactone 25mg</p>
+                  <p style="margin:7px 0 0; font-size:14px; line-height:1.8; color:#16221F; opacity:.72">الاثنان يرفعان البوتاسيوم. يُنصح بقياس البوتاسيوم والكرياتينين بعد أسبوعين من التجديد.</p>
+                </div>
+                <span style="font-size:13px; color:#C08A3E; background:rgba(192,138,62,.12); padding:5px 11px; border-radius:9px; white-space:nowrap">شدة متوسطة</span>
+              </div>
+              <div style="display:flex; align-items:flex-start; gap:13px; background:#F6F5F1; border-radius:14px; padding:15px 16px">
+                <span style="width:8px; height:8px; border-radius:50%; background:#AFB8B5; margin-top:7px; flex:none"></span>
+                <div style="flex:1">
+                  <p dir="ltr" style="margin:0; font-family:Outfit,sans-serif; font-size:14.5px; color:#09483D; text-align:right">Metformin 500mg × Lisinopril 10mg</p>
+                  <p style="margin:7px 0 0; font-size:14px; line-height:1.8; color:#16221F; opacity:.72">احتمال خفض إضافي لسكر الدم. لا يستدعي تغييرًا، فقط انتباه المريض لأعراض الهبوط.</p>
+                </div>
+                <span style="font-size:13px; color:#348F80; background:rgba(52,143,128,.10); padding:5px 11px; border-radius:9px; white-space:nowrap">شدة منخفضة</span>
+              </div>
+            </div>
+            <p style="margin:16px 0 0; font-size:14px; line-height:1.85; color:#16221F; opacity:.68">فُحصت الأزواج الستة الممكنة داخل التركيبة كلها، لا الأدوية الجديدة فقط. الثلاثة غير المذكورة لم يظهر لها تفاعل مسجّل.</p>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="background:#FFFEFB; border:1px solid rgba(175,184,181,.4); border-radius:22px; overflow:hidden; box-shadow:0 20px 46px -34px rgba(9,72,61,.34)">
+        <div role="button" onClick="{{ toggle3 }}" style="display:flex; align-items:center; gap:16px; padding:22px 24px; cursor:pointer">
+          <span style="font-family:Outfit,sans-serif; font-size:13px; color:#AFB8B5; width:22px">03</span>
+          <span style="flex:1; font-size:18px; font-weight:600; color:#09483D">فحص التوفّر</span>
+          <span style="font-size:13.5px; color:#AFB8B5">دواء واحد غير متوفّر</span>
+          <span style="font-family:Outfit,sans-serif; font-size:19px; color:#348F80; width:18px; text-align:center">{{ caret3 }}</span>
+        </div>
+        <sc-if value="{{ open3 }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:0 24px 24px">
+            <div style="display:grid; gap:9px">
+              <div style="display:flex; align-items:center; gap:14px; background:#F6F5F1; border-radius:14px; padding:14px 16px">
+                <span dir="ltr" style="flex:1; font-family:Outfit,sans-serif; font-size:15px; color:#09483D; text-align:right">Amlodipine 5mg</span>
+                <span style="font-size:13.5px; color:#AFB8B5">فُحصت <span style="font-family:Outfit,sans-serif">12</span> صيدلية · آخر توفّر قبل <span style="font-family:Outfit,sans-serif">23</span> يومًا</span>
+                <span style="font-size:13px; color:#B5473A; background:rgba(181,71,58,.10); padding:5px 11px; border-radius:9px; white-space:nowrap">غير متوفّر</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:14px; background:#F6F5F1; border-radius:14px; padding:14px 16px">
+                <span dir="ltr" style="flex:1; font-family:Outfit,sans-serif; font-size:15px; color:#09483D; text-align:right">Metformin 500mg</span>
+                <span style="font-size:13.5px; color:#AFB8B5">متوفّر في <span style="font-family:Outfit,sans-serif">11</span> من <span style="font-family:Outfit,sans-serif">12</span></span>
+                <span style="font-size:13px; color:#348F80; background:rgba(52,143,128,.10); padding:5px 11px; border-radius:9px; white-space:nowrap">متوفّر</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:14px; background:#F6F5F1; border-radius:14px; padding:14px 16px">
+                <span dir="ltr" style="flex:1; font-family:Outfit,sans-serif; font-size:15px; color:#09483D; text-align:right">Lisinopril 10mg</span>
+                <span style="font-size:13.5px; color:#AFB8B5">متوفّر في <span style="font-family:Outfit,sans-serif">12</span> من <span style="font-family:Outfit,sans-serif">12</span></span>
+                <span style="font-size:13px; color:#348F80; background:rgba(52,143,128,.10); padding:5px 11px; border-radius:9px; white-space:nowrap">متوفّر</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:14px; background:#F6F5F1; border-radius:14px; padding:14px 16px">
+                <span dir="ltr" style="flex:1; font-family:Outfit,sans-serif; font-size:15px; color:#09483D; text-align:right">Atorvastatin 20mg</span>
+                <span style="font-size:13.5px; color:#AFB8B5">متوفّر في <span style="font-family:Outfit,sans-serif">9</span> من <span style="font-family:Outfit,sans-serif">12</span></span>
+                <span style="font-size:13px; color:#348F80; background:rgba(52,143,128,.10); padding:5px 11px; border-radius:9px; white-space:nowrap">متوفّر</span>
+              </div>
+            </div>
+            <p style="margin:16px 0 0; font-size:14px; line-height:1.85; color:#16221F; opacity:.68">التوفّر مأخوذ من مخزون الصيدليات المشاركة في نطاق المريض، محدّث اليوم <span style="font-family:Outfit,sans-serif; font-size:.95em">08:40</span>.</p>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="background:#FFFEFB; border:1px solid rgba(175,184,181,.4); border-radius:22px; overflow:hidden; box-shadow:0 20px 46px -34px rgba(9,72,61,.34)">
+        <div role="button" onClick="{{ toggle4 }}" style="display:flex; align-items:center; gap:16px; padding:22px 24px; cursor:pointer">
+          <span style="font-family:Outfit,sans-serif; font-size:13px; color:#AFB8B5; width:22px">04</span>
+          <span style="flex:1; font-size:18px; font-weight:600; color:#09483D">ترتيب البدائل وموازنة التركيبة</span>
+          <span style="font-size:13.5px; color:#AFB8B5">٣ مرشّحين</span>
+          <span style="font-family:Outfit,sans-serif; font-size:19px; color:#348F80; width:18px; text-align:center">{{ caret4 }}</span>
+        </div>
+        <sc-if value="{{ open4 }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:0 24px 24px">
+            <div style="display:grid; gap:9px">
+              <div style="background:#F6F5F1; border:1px solid rgba(52,143,128,.28); border-radius:14px; padding:15px 16px">
+                <div style="display:flex; align-items:center; gap:14px">
+                  <span dir="ltr" style="flex:1; font-family:Outfit,sans-serif; font-size:15.5px; color:#09483D; text-align:right">Nifedipine SR 30mg</span>
+                  <span style="font-size:13px; color:#348F80; background:rgba(52,143,128,.12); padding:5px 11px; border-radius:9px; white-space:nowrap">المرشّح الأول</span>
+                  <span style="font-family:Outfit,sans-serif; font-size:14px; color:#348F80; white-space:nowrap">92%</span>
+                </div>
+                <p style="margin:9px 0 0; font-size:14px; line-height:1.8; color:#16221F; opacity:.72">نفس المجموعة (حاصرات قنوات الكالسيوم)، جرعة يومية واحدة، متوفّر في <span style="font-family:Outfit,sans-serif; font-size:.95em">10</span> صيدليات، ولا يضيف تفاعلًا جديدًا مع بقية المكوّنات.</p>
+              </div>
+              <div style="background:#F6F5F1; border-radius:14px; padding:15px 16px">
+                <div style="display:flex; align-items:center; gap:14px">
+                  <span dir="ltr" style="flex:1; font-family:Outfit,sans-serif; font-size:15.5px; color:#09483D; text-align:right">Felodipine 5mg</span>
+                  <span style="font-family:Outfit,sans-serif; font-size:14px; color:#AFB8B5; white-space:nowrap">84%</span>
+                </div>
+                <p style="margin:9px 0 0; font-size:14px; line-height:1.8; color:#16221F; opacity:.72">تكافؤ علاجي جيد، لكن التوفّر أقل (<span style="font-family:Outfit,sans-serif; font-size:.95em">4</span> صيدليات) واحتمال تورّم الكاحل أعلى قليلًا.</p>
+              </div>
+              <div style="background:#F6F5F1; border-radius:14px; padding:15px 16px">
+                <div style="display:flex; align-items:center; gap:14px">
+                  <span dir="ltr" style="flex:1; font-family:Outfit,sans-serif; font-size:15.5px; color:#09483D; text-align:right">Diltiazem SR 120mg</span>
+                  <span style="font-family:Outfit,sans-serif; font-size:14px; color:#AFB8B5; white-space:nowrap">71%</span>
+                </div>
+                <p style="margin:9px 0 0; font-size:14px; line-height:1.8; color:#16221F; opacity:.72">فعّال للضغط، لكنه يثبّط <span style="font-family:Outfit,sans-serif; font-size:.95em">CYP3A4</span> فيضيف تفاعلًا جديدًا مع الستاتين داخل نفس التركيبة — لذلك نزل ترتيبه.</p>
+              </div>
+            </div>
+            <p style="margin:16px 0 0; font-size:14px; line-height:1.85; color:#16221F; opacity:.68">الترتيب يوازن ثلاثة أوزان: التكافؤ العلاجي، التوفّر الفعلي، وأثر البديل على بقية التركيبة. البديل الذي يحلّ مشكلة ويخلق أخرى يُخفَّض ولا يُحجب.</p>
+          </div>
+        </sc-if>
+      </div>
+
+    </section>
+
+    <section style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-top:clamp(40px,7vh,72px); padding-top:clamp(32px,5vh,52px); border-top:1px solid rgba(175,184,181,.4)">
+      <div>
+        <p style="margin:0; font-size:16.5px; color:#09483D; font-weight:500">طباعة كل الخطوات مع التقرير</p>
+        <p style="margin:8px 0 0; font-size:14px; color:#AFB8B5; max-width:44ch; line-height:1.8">النسخة الكاملة تتضمّن المراحل الأربعة ودرجات الثقة، بخلاف النسخة المختصرة الموجّهة للمريض.</p>
+      </div>
+      <button class="no-print" onClick="{{ print }}" style="border:0; cursor:pointer; font-family:inherit; display:inline-flex; align-items:center; gap:12px; background:#348F80; color:#F6F5F1; padding:17px 34px; border-radius:16px; font-size:17px; font-weight:500; box-shadow:0 14px 30px -18px rgba(9,72,61,.5); transition:box-shadow .35s ease, transform .35s ease, background .35s ease" style-hover="background:#2E8274; box-shadow:0 16px 42px -12px rgba(216,154,131,.72); transform:translateY(-2px)">طباعة التقرير الكامل</button>
+    </section>
+
+  </main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startExpanded&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;first&quot;,&quot;all&quot;,&quot;none&quot;],&quot;default&quot;:&quot;first&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;سلوك&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const mode = props.startExpanded ?? "first";
+    const all = mode === "all";
+    this.state = { open: [mode !== "none", all, all, all] };
+  }
+  toggle(i) {
+    this.setState(s => {
+      const open = s.open.slice();
+      open[i] = !open[i];
+      return { open };
+    });
+  }
+  renderVals() {
+    const o = this.state.open;
+    return {
+      open1: o[0], open2: o[1], open3: o[2], open4: o[3],
+      caret1: o[0] ? "−" : "+", caret2: o[1] ? "−" : "+",
+      caret3: o[2] ? "−" : "+", caret4: o[3] ? "−" : "+",
+      toggle1: () => this.toggle(0), toggle2: () => this.toggle(1),
+      toggle3: () => this.toggle(2), toggle4: () => this.toggle(3),
+      print: () => { this.setState({ open: [true, true, true, true] }, () => setTimeout(() => window.print(), 60)); }
+    };
+  }
+}
+</script>
+</body>
+</html>

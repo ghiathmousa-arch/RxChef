@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8" />
+<title>RxChef — عن المشروع</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  body { margin:0; background:#F6F5F1; color:#16221F; font-family:'IBM Plex Sans Arabic', system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#348F80; text-decoration:none; }
+  a:hover { color:#D89A83; }
+</style>
+</helmet>
+<div dir="rtl" style="min-height:100vh; padding:0 clamp(20px,7vw,110px) 96px; box-sizing:border-box; background:radial-gradient(64% 42% at 78% 4%, rgba(52,143,128,.10), transparent 70%), radial-gradient(52% 38% at 10% 92%, rgba(216,154,131,.13), transparent 72%), linear-gradient(165deg,#F4F6F3,#F6F5F1 46%,#F8F1EC)">
+
+  <header style="position:sticky; top:16px; z-index:5; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:12px 22px 12px 26px; max-width:900px; margin:22px auto 0; box-sizing:border-box; background:linear-gradient(100deg, rgba(255,254,251,.82), rgba(244,246,243,.78)); backdrop-filter:blur(14px) saturate(1.1); -webkit-backdrop-filter:blur(14px) saturate(1.1); border:1px solid rgba(52,143,128,.16); border-radius:20px; box-shadow:0 12px 30px -22px rgba(9,72,61,.4)">
+    <a href="./RxChef Home.dc.html" style="display:flex; align-items:center"><img src="uploads/logo%20RxChef.jpg" alt="RxChef" style="height:38px; width:auto; mix-blend-mode:multiply" /></a>
+    <nav style="display:flex; align-items:center; gap:clamp(12px,1.9vw,26px); font-size:14.5px; justify-content:flex-end; white-space:nowrap">
+      <a href="./RxChef Tool.dc.html" style="color:#09483D">الأداة</a>
+      <a href="./RxChef How It Works.dc.html" style="color:#09483D">كيف يعمل</a>
+      <a href="./RxChef About.dc.html" style="color:#348F80">عن المشروع</a>
+      <a href="./RxChef FAQ.dc.html" style="color:#09483D">أسئلة شائعة</a>
+      <a href="./RxChef Contact.dc.html" style="color:#09483D">تواصل</a>
+    </nav>
+  </header>
+
+  <main style="max-width:760px; margin:0 auto">
+
+    <section style="padding:clamp(44px,9vh,88px) 0 0">
+      <p style="margin:0 0 14px; font-size:13px; letter-spacing:.1em; color:#AFB8B5">عن المشروع</p>
+      <h1 style="margin:0; font-size:clamp(30px,3.6vw,44px); line-height:1.32; font-weight:600; color:#09483D; letter-spacing:-.01em; max-width:24ch; text-wrap:pretty">تجديد الوصفة قرار مركّب، والأدوات تتعامل معه كأنه سطر واحد</h1>
+    </section>
+
+    <section style="padding:clamp(38px,6vh,64px) 0 0; display:grid; gap:clamp(34px,5vh,54px)">
+
+      <div>
+        <p style="margin:0 0 12px; font-size:13px; letter-spacing:.08em; color:#AFB8B5">المشكلة</p>
+        <p style="margin:0; font-size:17px; line-height:2; color:#16221F; opacity:.84; text-wrap:pretty">المريض المزمن يحمل وصفة فيها أربعة أو خمسة أدوية، ويأتي كل شهر لتجديدها. الطبيب أو الصيدلي يجدّد سطرًا سطرًا: هل الدواء متوفّر؟ إن لم يكن، ما بديله؟ والسؤال الذي يبقى بلا جواب هو الأهم — كيف يؤثّر هذا البديل على بقية الأدوية في نفس الورقة؟ التفاعلات بين مكوّنات قديمة لم يلاحظها أحد تبقى كما هي، لأن أحدًا لم يعد يقرأ الوصفة كوحدة واحدة.</p>
+      </div>
+
+      <div>
+        <p style="margin:0 0 12px; font-size:13px; letter-spacing:.08em; color:#AFB8B5">الحل</p>
+        <p style="margin:0; font-size:17px; line-height:2; color:#16221F; opacity:.84; text-wrap:pretty">RxChef يأخذ الوصفة كاملة مدخلًا واحدًا، ويعيدها تقريرًا واحدًا. المطابقة الضبابية تقبل الإملاء الناقص بدل رفضه؛ فحص التفاعلات يمرّ على كل الأزواج داخل التركيبة لا على المُضاف فقط؛ البدائل تُرتَّب بوزن يجمع التكافؤ العلاجي والتوفّر وأثر البديل على بقية المكوّنات؛ وكل اقتراح يُكتب بجملة تشرح سببه بلغة يمكن قراءتها أمام المريض.</p>
+      </div>
+
+      <div>
+        <p style="margin:0 0 12px; font-size:13px; letter-spacing:.08em; color:#AFB8B5">حدود الأداة</p>
+        <p style="margin:0; font-size:17px; line-height:2; color:#16221F; opacity:.84; text-wrap:pretty">الأداة دعم قرار، لا بديل عنه. لا تكتب وصفة، ولا تحدّد جرعة جديدة، ولا تصرف دواء. مخرجها اقتراح مشروح ومصدره ظاهر، والقرار يبقى للطبيب أو الصيدلي الذي يعرف المريض. كل خطوة قابلة للعرض بتفاصيلها الحرفية، حتى يكون رفض الاقتراح ممكنًا على أساس واضح.</p>
+      </div>
+
+      <div>
+        <p style="margin:0 0 12px; font-size:13px; letter-spacing:.08em; color:#AFB8B5">السياق الأكاديمي</p>
+        <p style="margin:0; font-size:17px; line-height:2; color:#16221F; opacity:.84; text-wrap:pretty">المشروع بحث تطبيقي في المعلوماتية الصيدلانية: بناء نموذج يعالج الوصفة كوحدة تحليل واحدة، وقياس أثر ذلك على اكتشاف التفاعلات مقارنة بالفحص الفردي لكل دواء. قاعدة الأدوية والقواعد الدوائية مبنية على مراجع التفاعلات المنشورة، والنسخة الحالية نموذج أولي يُوسَّع بالتغذية الراجعة من الأطباء والصيادلة الذين يجرّبونه.</p>
+        <p style="margin:16px 0 0; font-size:14.5px; line-height:1.9; color:#AFB8B5">لتفاصيل المرجعية والفريق والجهة الأكاديمية: <a href="./RxChef Contact.dc.html">صفحة التواصل</a>.</p>
+      </div>
+
+    </section>
+
+    <section style="margin-top:clamp(44px,7vh,72px); padding-top:clamp(32px,5vh,50px); border-top:1px solid rgba(175,184,181,.4); display:flex; align-items:center; gap:22px; flex-wrap:wrap">
+      <a href="./RxChef Tool.dc.html" style="display:inline-flex; align-items:center; gap:12px; background:#348F80; color:#F6F5F1; padding:16px 32px; border-radius:16px; font-size:16.5px; font-weight:500; box-shadow:0 14px 30px -18px rgba(9,72,61,.5); transition:box-shadow .35s ease, transform .35s ease, background .35s ease" style-hover="background:#2E8274; box-shadow:0 16px 42px -12px rgba(216,154,131,.72); transform:translateY(-2px); color:#F6F5F1">جرّب الأداة</a>
+      <a href="./RxChef How It Works.dc.html" style="font-size:15px">كيف تعمل الخطوات الأربع ←</a>
+    </section>
+
+  </main>
+</div>
+
+</x-dc>
+</body>
+</html>

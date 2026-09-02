@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8" />
+<title>RxChef — تجديد الوصفات الذكي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#F6F5F1; background-image:linear-gradient(165deg,#F4F6F3 0%,#F6F5F1 42%,#F8F1EC 100%); background-attachment:fixed; color:#16221F; font-family:'IBM Plex Sans Arabic', system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#348F80; text-decoration:none; }
+  a:hover { color:#D89A83; }
+  @keyframes rise { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+  @media (prefers-reduced-motion: reduce) { * { animation:none !important; transition:none !important; } }
+</style>
+</helmet>
+<div dir="rtl" style="min-height:100vh; background:radial-gradient(64% 42% at 78% 4%, rgba(52,143,128,.10), transparent 70%), radial-gradient(52% 38% at 10% 92%, rgba(216,154,131,.13), transparent 72%), linear-gradient(165deg,#F4F6F3,#F6F5F1 46%,#F8F1EC); padding:0 clamp(20px,7vw,110px) 110px; box-sizing:border-box">
+
+  <header style="position:sticky; top:16px; z-index:5; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:12px 22px 12px 26px; max-width:1240px; margin:22px auto 0; box-sizing:border-box; background:linear-gradient(100deg, rgba(255,254,251,.82), rgba(244,246,243,.78)); backdrop-filter:blur(14px) saturate(1.1); -webkit-backdrop-filter:blur(14px) saturate(1.1); border:1px solid rgba(52,143,128,.16); border-radius:20px; box-shadow:0 12px 30px -22px rgba(9,72,61,.4)">
+    <img src="uploads/logo%20RxChef.jpg" alt="RxChef" style="height:44px; width:auto; mix-blend-mode:multiply" />
+    <nav style="display:flex; align-items:center; gap:clamp(12px,1.9vw,26px); font-size:14.5px; justify-content:flex-end; white-space:nowrap">
+      <a href="./RxChef Tool.dc.html" style="color:#09483D">الأداة</a>
+      <a href="./RxChef How It Works.dc.html" style="color:#09483D">كيف يعمل</a>
+      <a href="./RxChef About.dc.html" style="color:#09483D">عن المشروع</a>
+      <a href="./RxChef FAQ.dc.html" style="color:#09483D">أسئلة شائعة</a>
+      <a href="./RxChef Contact.dc.html" style="color:#09483D">تواصل</a>
+    </nav>
+  </header>
+
+  <main style="max-width:1240px; margin:0 auto">
+
+    <section style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(40px,7vw,96px); align-items:center; margin-top:clamp(28px,5vh,54px); padding:clamp(48px,8vh,92px) clamp(26px,4vw,58px); border:1px solid rgba(52,143,128,.14); border-radius:34px; background:radial-gradient(70% 60% at 88% 8%, rgba(52,143,128,.14), transparent 68%), radial-gradient(62% 55% at 6% 96%, rgba(216,154,131,.16), transparent 70%), linear-gradient(160deg, rgba(255,254,251,.86), rgba(246,245,241,.62)); box-shadow:0 30px 70px -46px rgba(9,72,61,.35)">
+      <div style="animation:rise .7s cubic-bezier(.22,.8,.28,1) both">
+        <h1 style="margin:0; font-size:clamp(36px,4.4vw,60px); line-height:1.28; font-weight:600; color:#09483D; letter-spacing:-.01em; text-wrap:pretty; max-width:20ch">
+          الوصفة تُجدَّد كاملة، كتركيبة واحدة.
+        </h1>
+        <p style="margin:30px 0 0; max-width:40ch; font-size:clamp(16px,1.3vw,18.5px); line-height:1.9; color:#16221F; opacity:.78; text-wrap:pretty">
+          فحص للتفاعلات، ترتيب للبدائل عند نقص التوفّر، وشرح واضح لكل اقتراح.
+        </p>
+        <div style="display:flex; align-items:center; gap:18px; margin-top:44px; flex-wrap:wrap">
+          <a href="./RxChef Tool.dc.html" style="display:inline-flex; align-items:center; gap:12px; background:#348F80; color:#F6F5F1; padding:17px 36px; border-radius:16px; font-size:17px; font-weight:500; box-shadow:0 14px 30px -18px rgba(9,72,61,.5); transition:box-shadow .35s ease, transform .35s ease, background .35s ease" style-hover="background:#2E8274; box-shadow:0 16px 42px -12px rgba(216,154,131,.72); transform:translateY(-2px); color:#F6F5F1">جرّب الأداة</a>
+          <a href="./RxChef Analysis Detail.dc.html" style="font-size:14.5px; color:#348F80; white-space:nowrap">تفاصيل التحليل ←</a>
+        </div>
+      </div>
+
+      <div style="position:relative; animation:rise .9s .1s cubic-bezier(.22,.8,.28,1) both">
+        <div style="position:absolute; inset:-9% -6%; background:radial-gradient(55% 50% at 60% 35%, rgba(52,143,128,.14), transparent 70%), radial-gradient(45% 45% at 32% 80%, rgba(216,154,131,.18), transparent 72%); filter:blur(8px)"></div>
+        <div dir="ltr" style="position:relative; width:100%; aspect-ratio:4/3; background:linear-gradient(158deg,#0C4A3F 0%,#2E8779 58%,#C79A85 100%); border:1px solid rgba(9,72,61,.18); border-radius:28px; box-shadow:0 34px 70px -32px rgba(9,72,61,.45); overflow:hidden">
+          <div style="position:absolute; inset:0; background:radial-gradient(58% 46% at 42% 16%, rgba(255,255,255,.16), transparent 72%), radial-gradient(48% 40% at 82% 92%, rgba(216,154,131,.28), transparent 74%)"></div>
+          <div style="position:absolute; left:0; right:0; bottom:26%; height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.42) 18%, rgba(255,255,255,.42) 82%, transparent)"></div>
+
+          <div style="position:absolute; left:12%; right:12%; bottom:26%; height:44%; display:flex; align-items:flex-end; justify-content:center; gap:4.5%">
+            
+          <div style="position:relative; width:26%; height:66%; border-radius:7px 7px 3px 3px; background:linear-gradient(160deg,#FBFAF6,#DDDCD4); box-shadow:0 16px 26px -14px rgba(4,32,27,.5), inset 0 1px 0 rgba(255,255,255,.28)">
+            <div style="position:absolute; inset:0; border-radius:7px 7px 3px 3px; background:linear-gradient(100deg, rgba(255,255,255,.16) 0 14%, rgba(255,255,255,0) 42%, rgba(0,0,0,.10) 100%)"></div>
+            <div style="position:absolute; left:9%; right:9%; top:14%; bottom:40%; background:rgba(9,72,61,.09); border-radius:3px; display:flex; flex-direction:column; justify-content:flex-start; gap:9%; padding:11% 10% 0; box-sizing:border-box">
+              <div style="width:34%; height:12%; min-height:3px; border-radius:2px; background:#348F80; opacity:.85"></div>
+              <div style="width:78%; height:8%; min-height:2px; border-radius:2px; background:rgba(22,34,31,.30)"></div><div style="width:56%; height:8%; min-height:2px; border-radius:2px; background:rgba(22,34,31,.16)"></div>
+            </div>
+          </div>
+            
+          <div style="position:relative; width:30%; height:100%; border-radius:7px 7px 3px 3px; background:linear-gradient(160deg,#FFFEFB,#E6E5DD); box-shadow:0 22px 34px -16px rgba(4,32,27,.55), inset 0 1px 0 rgba(255,255,255,.28)">
+            <div style="position:absolute; inset:0; border-radius:7px 7px 3px 3px; background:linear-gradient(100deg, rgba(255,255,255,.16) 0 14%, rgba(255,255,255,0) 42%, rgba(0,0,0,.10) 100%)"></div>
+            <div style="position:absolute; left:9%; right:9%; top:14%; bottom:34%; background:rgba(9,72,61,.09); border-radius:3px; display:flex; flex-direction:column; justify-content:flex-start; gap:9%; padding:11% 10% 0; box-sizing:border-box">
+              <div style="width:34%; height:12%; min-height:3px; border-radius:2px; background:#348F80; opacity:.85"></div>
+              <div style="width:78%; height:8%; min-height:2px; border-radius:2px; background:rgba(22,34,31,.30)"></div><div style="width:56%; height:8%; min-height:2px; border-radius:2px; background:rgba(22,34,31,.16)"></div><div style="width:66%; height:8%; min-height:2px; border-radius:2px; background:rgba(22,34,31,.12)"></div>
+            </div>
+          </div>
+            
+          <div style="position:relative; width:24%; height:54%; border-radius:7px 7px 3px 3px; background:linear-gradient(160deg,#E9B7A2,#CE9179); box-shadow:0 14px 24px -13px rgba(4,32,27,.45), inset 0 1px 0 rgba(255,255,255,.28)">
+            <div style="position:absolute; inset:0; border-radius:7px 7px 3px 3px; background:linear-gradient(100deg, rgba(255,255,255,.16) 0 14%, rgba(255,255,255,0) 42%, rgba(0,0,0,.10) 100%)"></div>
+            <div style="position:absolute; left:9%; right:9%; top:14%; bottom:44%; background:rgba(9,72,61,.09); border-radius:3px; display:flex; flex-direction:column; justify-content:flex-start; gap:9%; padding:11% 10% 0; box-sizing:border-box">
+              <div style="width:34%; height:12%; min-height:3px; border-radius:2px; background:#348F80; opacity:.85"></div>
+              <div style="width:78%; height:8%; min-height:2px; border-radius:2px; background:rgba(22,34,31,.30)"></div><div style="width:56%; height:8%; min-height:2px; border-radius:2px; background:rgba(22,34,31,.16)"></div>
+            </div>
+          </div>
+          </div>
+
+          <div style="position:absolute; left:12%; right:12%; bottom:25.4%; height:5%; background:radial-gradient(ellipse at 30% 0, rgba(4,32,27,.30), transparent 62%), radial-gradient(ellipse at 52% 0, rgba(4,32,27,.34), transparent 60%), radial-gradient(ellipse at 74% 0, rgba(4,32,27,.26), transparent 62%); filter:blur(3px)"></div>
+
+          <div style="position:absolute; bottom:13%; left:50%; transform:translateX(-50%) rotate(-3deg); width:38%; padding:2.4% 3%; box-sizing:border-box; border-radius:8px; background:linear-gradient(150deg,#FBFAF6,#E9E8E2); box-shadow:0 16px 30px -14px rgba(4,32,27,.5), inset 0 1px 0 rgba(255,255,255,.75); display:grid; grid-template-columns:repeat(5,1fr); gap:10%">
+            <div style="aspect-ratio:1; border-radius:50%; background:linear-gradient(160deg,#4EA091,#2E8779); box-shadow:inset 0 -1px 2px rgba(0,0,0,.18)"></div>
+            <div style="aspect-ratio:1; border-radius:50%; background:linear-gradient(160deg,#4EA091,#2E8779); box-shadow:inset 0 -1px 2px rgba(0,0,0,.18)"></div>
+            <div style="aspect-ratio:1; border-radius:50%; background:linear-gradient(160deg,#4EA091,#2E8779); box-shadow:inset 0 -1px 2px rgba(0,0,0,.18)"></div>
+            <div style="aspect-ratio:1; border-radius:50%; background:linear-gradient(160deg,#E9B7A2,#CE9179); box-shadow:inset 0 -1px 2px rgba(0,0,0,.14)"></div>
+            <div style="aspect-ratio:1; border-radius:50%; background:rgba(175,184,181,.35); box-shadow:inset 0 1px 2px rgba(0,0,0,.10)"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+</x-dc>
+</body>
+</html>

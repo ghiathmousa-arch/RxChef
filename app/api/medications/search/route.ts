@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 
 // اقتراحات حيّة أثناء الكتابة بالأداة — بحث substring بسيط على قاعدة
-// الأدوية الحقيقية (Prisma/SQLite). هاد بحث تقريبي للراحة بس، مش سلطة
+// الأدوية الحقيقية (Prisma/Postgres). هاد بحث تقريبي للراحة بس، مش سلطة
 // المطابقة النهائية — تلك تصير بخوارزمية fuzzy matching الحقيقية بـFastAPI
 // وقت الضغط على "حلّل الوصفة".
 export async function GET(request: Request) {
@@ -14,7 +14,12 @@ export async function GET(request: Request) {
 
   const matches = await prisma.medication.findMany({
     where: {
-      OR: [{ name: { contains: q } }, { genericName: { contains: q } }],
+      // mode: "insensitive" ضروري على Postgres — بعكس SQLite، `contains`
+      // عنده حسّاس لحالة الأحرف، فبحث "cou" ما كان بيلاقي "Coumadin".
+      OR: [
+        { name: { contains: q, mode: "insensitive" } },
+        { genericName: { contains: q, mode: "insensitive" } },
+      ],
     },
     take: 20,
     orderBy: { name: "asc" },

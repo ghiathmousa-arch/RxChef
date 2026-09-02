@@ -17,9 +17,11 @@ export default async function AdminMedicationsPage({
       query
         ? {
             OR: [
-              { name: { contains: query } },
-              { genericName: { contains: query } },
-              { therapeuticClass: { contains: query } },
+              // mode: "insensitive" ضروري على Postgres — بعكس SQLite،
+              // `contains` عنده حسّاس لحالة الأحرف.
+              { name: { contains: query, mode: "insensitive" } },
+              { genericName: { contains: query, mode: "insensitive" } },
+              { therapeuticClass: { contains: query, mode: "insensitive" } },
             ],
           }
         : {},
