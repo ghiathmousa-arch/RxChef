@@ -1,0 +1,16 @@
+# الاستضافة المجانية بتنيّم خدمة التحليل بعد 15 دقيقة خمول، وإيقاظها على
+# نواة 0.1 CPU بياخد ~دقيقتين — أطول من مهلة الطلب، فأول تحليل بيفشل.
+# طلب بسيط كل 10 دقايق بيخليها صاحية.
+name: إبقاء خدمة التحليل صاحية
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: طلب /health
+        run: curl --silent --show-error --fail --max-time 120 https://rxchef-api.onrender.com/health

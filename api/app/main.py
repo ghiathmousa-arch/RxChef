@@ -12,13 +12,15 @@ from app.severity_model import get_trained_severity_model
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """بيدرّب نموذج الشدّة وقت إقلاع الخدمة، مش عند أول طلب /analyze.
-    بدون هيك، أول تحليل بعد كل إقلاع كان بياخد ~8 ثواني زيادة (تدريب
-    Model Comparison) — وعلى استضافة مجانية بتنام عند الخمول، هاد كان
-    بيتراكم مع وقت الإقلاع ويأدي لانتهاء مهلة الطلب. to_thread عشان
-    التدريب (CPU-bound) ما يجمّد الحلقة غير المتزامنة."""
-    await asyncio.to_thread(get_trained_severity_model)
+    """بيبلّش تدريب نموذج الشدّة بالخلفية وقت الإقلاع، مش عند أول طلب
+    /analyze. مهم يكون بالخلفية مش بانتظار: uvicorn ما بيفتح المنفذ إلا
+    بعد ما يخلص الـlifespan، وعلى نواة الاستضافة المجانية (0.1 CPU)
+    التدريب بياخد دقائق — يعني كنا بنأخّر ردّ /health لهالمدة كلها،
+    وفحص الجاهزية بيفشل. هيك المنفذ بينفتح فوراً والنموذج بيجهز بالتوازي.
+    to_thread عشان التدريب (CPU-bound) ما يجمّد الحلقة غير المتزامنة."""
+    warmup = asyncio.create_task(asyncio.to_thread(get_trained_severity_model))
     yield
+    warmup.cancel()
 
 
 app = FastAPI(title="RxChef Analysis Service", lifespan=lifespan)
