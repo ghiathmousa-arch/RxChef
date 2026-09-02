@@ -6,7 +6,8 @@ services:
     runtime: python
     plan: free
     rootDir: api
-    buildCommand: pip install -r requirements.txt
+    # التدريب وقت البناء: آلة البناء أقوى من نواة التشغيل المجانية
+    buildCommand: pip install -r requirements.txt && python train_model.py
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
     envVars:

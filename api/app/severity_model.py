@@ -4,8 +4,10 @@
 
 from dataclasses import dataclass
 from functools import lru_cache
+from pathlib import Path
 from typing import Any
 
+import joblib
 import numpy as np
 
 from app.algorithms.model_comparison import compare_models
@@ -40,8 +42,14 @@ def _extract_feature_importances(model: Any) -> dict[str, float] | None:
     return None
 
 
-@lru_cache(maxsize=1)
-def get_trained_severity_model() -> TrainedSeverityModel:
+# مسار النموذج المُدرَّب مسبقاً. بالنشر منولّده وقت البناء (سكربت
+# train_model.py) بدل ما ندرّب عند كل إقلاع: نواة الاستضافة المجانية
+# (0.1 CPU / 512MB) التدريب عليها بياخد دقائق أو بتخلص الذاكرة، فأول طلب
+# تحليل كان بيضل معلّق. التحميل من الملف بياخد أقل من ثانية.
+MODEL_PATH = Path(__file__).parent / "data" / "severity_model.joblib"
+
+
+def train_severity_model() -> TrainedSeverityModel:
     """بتدرّب بس على التفاعلات يلي عندها شدّة موثوقة (manual + onc_high)،
     وبتستخدم نفس المجموعة كسياق لحساب الفيتشرز (drugbank_unverified
     مستثناة من الاثنين). مهم يضل هيك متوافق مع pipeline.py وقت الاستدلال
@@ -61,3 +69,16 @@ def get_trained_severity_model() -> TrainedSeverityModel:
         candidate_accuracies={score.name: score.accuracy for score in result.scores},
         feature_importances=_extract_feature_importances(result.best.model),
     )
+
+
+@lru_cache(maxsize=1)
+def get_trained_severity_model() -> TrainedSeverityModel:
+    """بترجّع النموذج المُدرَّب: من الملف إذا موجود (حالة النشر)، وإلا
+    بتدرّب بالذاكرة (حالة التطوير والاختبارات). فشل التحميل — مثلاً ملف
+    من نسخة مكتبة مختلفة — ما بيكسر الخدمة، بيرجع للتدريب."""
+    if MODEL_PATH.exists():
+        try:
+            return joblib.load(MODEL_PATH)
+        except Exception:  # noqa: BLE001 — أي فشل تحميل، منرجع ندرّب
+            pass
+    return train_severity_model()
