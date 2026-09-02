@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Medication {
+  id               Int      @id @default(autoincrement())
+  name             String
+  genericName      String
+  dosage           String
+  therapeuticClass String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  interactionsAsA Interaction[] @relation("DrugA")
+  interactionsAsB Interaction[] @relation("DrugB")
+
+  @@index([name])
+  @@index([genericName])
+}
+
+model Interaction {
+  id          Int      @id @default(autoincrement())
+  drugAId     Int
+  drugBId     Int
+  severity    String
+  description String
+  createdAt   DateTime @default(now())
+
+  drugA Medication @relation("DrugA", fields: [drugAId], references: [id])
+  drugB Medication @relation("DrugB", fields: [drugBId], references: [id])
+
+  @@unique([drugAId, drugBId])
+  @@index([drugAId])
+  @@index([drugBId])
+}
+
+model OperationLog {
+  id                Int      @id @default(autoincrement())
+  createdAt         DateTime @default(now())
+  inputDrugNames    String
+  interactionsFound Int
+  unmatchedCount    Int
+  alternativesFound Int      @default(0)
+  reportJson        String
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Testimonial {
+  id         Int      @id @default(autoincrement())
+  name       String
+  role       String
+  quote      String
+  isApproved Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([isApproved])
+}

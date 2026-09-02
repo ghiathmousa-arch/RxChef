@@ -1,0 +1,14 @@
+# إعداد نشر خدمة التحليل (FastAPI) على Render — الطبقة المجانية.
+# Render بيقرأ هالملف لما يكون Root Directory = api
+services:
+  - type: web
+    name: rxchef-api
+    runtime: python
+    plan: free
+    rootDir: api
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13.1"

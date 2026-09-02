@@ -1,0 +1,39 @@
+# تشغيل يدوي: يطبّق الـmigrations ويعمّر قاعدة البيانات بالأدوية والتفاعلات.
+# سبب وجوده: شبكة التطوير المحلية بتحجب المنفذ 5432، فما فينا نوصل لقاعدة
+# الإنتاج من الجهاز. سيرفرات GitHub شبكتها مفتوحة، فمنشغّلها من هون.
+#
+# قبل أول تشغيل: أضف DATABASE_URL بـ
+# Settings → Secrets and variables → Actions → New repository secret
+name: تجهيز قاعدة البيانات
+
+on:
+  workflow_dispatch:
+    inputs:
+      seed:
+        description: "تعمير البيانات (400 دواء + التفاعلات) بعد الـmigration"
+        type: boolean
+        default: true
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - run: npm ci
+
+      - name: تطبيق الـmigrations
+        run: npx prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: تعمير البيانات
+        if: inputs.seed
+        run: npx prisma db seed
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}

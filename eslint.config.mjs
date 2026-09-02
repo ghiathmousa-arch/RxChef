@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Not JS/TS application source: Python service and design-canvas export.
+    "api/**",
+    "RxChef ui-ux/**",
   ]),
 ]);
 

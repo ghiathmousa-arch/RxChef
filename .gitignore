@@ -30,8 +30,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files — الأسرار ما بتنرفع. .env.example مستثنى من الاستثناء لأنه
+# مرجع المفاتيح المطلوبة (بلا قيم).
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +41,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/app/generated/prisma
+
+# prisma sqlite dev database (rebuild via: npx prisma migrate dev && npx prisma db seed)
+/prisma/dev.db
+/prisma/dev.db-journal
+
+# إعدادات أدوات المحرر/الوكلاء (نسخ توثيق محلية، مالها علاقة بالمشروع)
+/.claude/
+/.agents/
+/.windsurf/
+/.vscode/
+
+# ملفات التصميم (Claude Design) — مرجع محلي، مالها علاقة بالكود
+"/RxChef ui-ux/"
