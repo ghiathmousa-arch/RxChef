@@ -1,3 +1,4 @@
+import type { Prisma } from "@/app/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import { MedicationsManager, type MedicationRow } from "./medications-manager";
 
@@ -12,7 +13,9 @@ export default async function AdminMedicationsPage({
   const query = (q ?? "").trim();
   const activeClass = (classFilter ?? "").trim();
 
-  const where = {
+  // النوع الصريح ضروري: بلاه TypeScript بيوسّع "insensitive" لنوع string
+  // العام، وPrisma بدها القيمة الحرفية بالضبط.
+  const where: Prisma.MedicationWhereInput = {
     AND: [
       query
         ? {
