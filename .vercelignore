@@ -1,0 +1,8 @@
+# خدمة التحليل (FastAPI) بتنشر على Render، مو على Vercel. بلا هالاستثناء،
+# Vercel بيلاقي api/requirements.txt وبيبني خدمة بايثون كمان — بينزّل
+# xgboost وscikit-learn وscipy فيطلع حجم الحزمة 622MB والحد 500MB.
+api/
+
+# ملفات تصميم ووثائق، ما إلها علاقة بالبناء
+RxChef ui-ux/
+*.md
